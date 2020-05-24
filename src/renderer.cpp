@@ -51,7 +51,14 @@ void Renderer::Render(Snake const snake, SDL_Point const &food, Ball const &ball
   SDL_SetRenderDrawColor(sdl_renderer, 0xFF, 0xCC, 0x00, 0xFF);
   block.x = ball.x * block.w;
   block.y = ball.y * block.h;
-  SDL_RenderFillRect(sdl_renderer, &block);
+  SDL_Point ball_position;
+  ball_position.x = ball.x;
+  ball_position.y = ball.y;
+  Renderer::DrawCircle(sdl_renderer, ball_position, 10);
+  //sdl_surface = IMG_Load("ball.png");
+  //sdl_texture = SDL_CreateTextureFromSurface(sdl_renderer, sdl_surface);
+  //SDL_FreeSurface(sdl_surface);
+  //SDL_RenderCopy(sdl_renderer, sdl_texture, 0, &block);
 
   // Render snake's body
   SDL_SetRenderDrawColor(sdl_renderer, 0xFF, 0xFF, 0xFF, 0xFF);
@@ -78,4 +85,20 @@ void Renderer::Render(Snake const snake, SDL_Point const &food, Ball const &ball
 void Renderer::UpdateWindowTitle(int score, int fps) {
   std::string title{"Snake Score: " + std::to_string(score) + " FPS: " + std::to_string(fps)};
   SDL_SetWindowTitle(sdl_window, title.c_str());
+}
+
+void Renderer::DrawCircle(SDL_Renderer *renderer, SDL_Point center, int radius)
+{
+    for (int w = 0; w < radius * 2; w++)
+    {
+        for (int h = 0; h < radius * 2; h++)
+        {
+            int dx = radius - w; // horizontal offset
+            int dy = radius - h; // vertical offset
+            if ((dx*dx + dy*dy) <= (radius * radius))
+            {
+                SDL_RenderDrawPoint(renderer, center.x + dx, center.y + dy);
+            }
+        }
+    }
 }

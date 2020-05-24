@@ -14,6 +14,8 @@ class Renderer {
 
   void Render(Snake const snake, SDL_Point const &food, Ball const &ball);
   void UpdateWindowTitle(int score, int fps);
+  void DrawCircle(SDL_Renderer *renderer, SDL_Point center, int radius);
+
 
  private:
   SDL_Window *sdl_window;
