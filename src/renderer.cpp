@@ -38,7 +38,7 @@ Renderer::~Renderer() {
   SDL_Quit();
 }
 
-void Renderer::Render(Snake const snake, SDL_Point const &food, Ball const &ball, Paddle const &paddle) {
+void Renderer::Render(Snake const snake, SDL_Point const &food, Ball const &ball, Paddle const &paddle, Board const &board) {
   SDL_Rect block;
   block.w = screen_width / grid_width;
   block.h = screen_height / grid_height;
@@ -68,11 +68,35 @@ void Renderer::Render(Snake const snake, SDL_Point const &food, Ball const &ball
     block.h = paddle.paddleHeight;
         SDL_RenderFillRect(sdl_renderer, &block);
 
+  // Render board
+  //SDL_SetRenderDrawColor(sdl_renderer, 0xFF, 0x00, 0x00, 0xFF);
+  for (int i = 0; i < board_parameters::board_width; i++)
+  {
+    for (int j = 0; j < board_parameters::board_height; j++)
+    {
+      Brick brick = board.bricks[i][j];
+      // check if the brick exists
+      /*if (!brick.state)
+      {
+        continue;
+      }*/
+      SDL_Rect sdl_brick;
+      sdl_brick.x = board.brickoffsetx + board.x + i * board_parameters::board_brick_width;
+      sdl_brick.y = board.brickoffsety + board.y + j * board_parameters::board_brick_height;
+      sdl_brick.w = board_parameters::board_brick_width;
+      sdl_brick.h = board_parameters::board_brick_height;
+      SDL_SetRenderDrawColor(sdl_renderer, 0xFF, 0x00, 0x00, 0xFF);
+      SDL_RenderFillRect(sdl_renderer, &sdl_brick);
+      SDL_SetRenderDrawColor(sdl_renderer, 0xFF, 0xFF, 0xFF, 0xFF);
+      SDL_RenderDrawRect(sdl_renderer, &sdl_brick);
+    }
+  }
 
   // Render snake's head
   block.x = static_cast<int>(snake.head_x) * block.w;
   block.y = static_cast<int>(snake.head_y) * block.h;
-  if (snake.alive) {
+  if (snake.alive)
+  {
     SDL_SetRenderDrawColor(sdl_renderer, 0x00, 0x7A, 0xCC, 0xFF);
   } else {
     SDL_SetRenderDrawColor(sdl_renderer, 0xFF, 0x00, 0x00, 0xFF);
