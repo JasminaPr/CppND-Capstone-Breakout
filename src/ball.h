@@ -14,15 +14,17 @@ public:
     Ball();
     ~Ball();
 
-    void Update();
- //   void Render();
-
+    void Update(float deltaTimeSec);
     void SetDirection(float ballDirectionX, float ballDirectionY);
 
+    //position
     float x, y; //(jpremec) todo: getter and setter
-
+    //dimensions
+    float width, height; //(jpremec) todo: getter and setter
+    //direction of movement
+    float movementDirectionX, movementDirectionY;
 private:
-    float ballDirectionX, ballDirectionY;
+    
 };
 
 #endif

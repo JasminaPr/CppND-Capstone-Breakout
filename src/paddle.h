@@ -4,14 +4,18 @@
 class Paddle
 {
 public:
-    //enum class Direction { kUp, kDown, kLeft, kRight }; //works for paddle, not ball
+    enum class Direction { kLeft, kRight }; //works for paddle, not ball
 
     Paddle();
     ~Paddle();
 
     void Update();
- 
-    float paddleWidth, paddleHeight;
+
+    //position
+    float x, y; //(jpremec) todo: getter and setter
+    //dimensions
+    float paddleWidth, paddleHeight; //(jpremec) todo: getter and setter
+
 private:
 };
 

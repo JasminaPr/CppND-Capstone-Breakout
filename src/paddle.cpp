@@ -1,6 +1,8 @@
 #include "paddle.h"
 
-Paddle::Paddle(): paddleWidth(128), paddleHeight(32) {}
+Paddle::Paddle() : paddleHeight(32),
+                   paddleWidth(128),
+                   y(560){}; //todo: connect them to screen variables
 Paddle::~Paddle() {}
 
 void Paddle::Update() {}
