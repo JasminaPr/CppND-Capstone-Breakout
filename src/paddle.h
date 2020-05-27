@@ -16,6 +16,8 @@ public:
     //dimensions
     float paddleWidth, paddleHeight; //(jpremec) todo: getter and setter
 
+    Direction direction;
+
 private:
 };
 
