@@ -10,8 +10,7 @@ class Controller {
   void HandleInput(bool &running, Paddle &paddle) const;
 
  private:
-  void ChangeDirection(Paddle &paddle, Paddle::Direction input,
-                       Paddle::Direction opposite) const;
+  void SetPaddleX(Paddle &paddle, Paddle::Direction input) const;
 };
 
 #endif

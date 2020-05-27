@@ -3,27 +3,39 @@
 #include "SDL.h"
 //#include "paddle.h"
 
-void Controller::ChangeDirection(Paddle &paddle, Paddle::Direction input,
-                                 Paddle::Direction opposite) const {
-  if (paddle.direction != opposite) paddle.direction = input;
-  return;
+void Controller::SetPaddleX(Paddle &paddle, Paddle::Direction input) const
+{
+  paddle.direction = input;
+
+  switch (paddle.direction)
+  {
+  case Paddle::Direction::kLeft:
+    paddle.x -= paddle.speed;
+    break;
+  case Paddle::Direction::kRight:
+    paddle.x += paddle.speed;
+    break;
+  }
 }
 
-void Controller::HandleInput(bool &running, Paddle &paddle) const {
+void Controller::HandleInput(bool &running, Paddle &paddle) const
+{
   SDL_Event e;
-  while (SDL_PollEvent(&e)) {
-    if (e.type == SDL_QUIT) {
+  while (SDL_PollEvent(&e))
+  {
+    if (e.type == SDL_QUIT)
+    {
       running = false;
-    } else if (e.type == SDL_KEYDOWN) {
+    }
+    else if (e.type == SDL_KEYDOWN)
+    {
       switch (e.key.keysym.sym) {
         case SDLK_LEFT:
-          ChangeDirection(paddle, Paddle::Direction::kLeft,
-                          Paddle::Direction::kRight);
+          SetPaddleX(paddle, Paddle::Direction::kLeft);
           break;
 
         case SDLK_RIGHT:
-          ChangeDirection(paddle, Paddle::Direction::kRight,
-                          Paddle::Direction::kLeft);
+          SetPaddleX(paddle, Paddle::Direction::kRight);
           break;
       }
     }

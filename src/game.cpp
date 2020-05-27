@@ -82,6 +82,8 @@ void Game::Update() {
     snake.GrowBody();
     snake.speed += 0.02;
   }
+
+  paddle.Update();
 }
 
 int Game::GetScore() const { return score; }

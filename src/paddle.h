@@ -18,6 +18,8 @@ public:
 
     Direction direction;
 
+    float speed{0.1f}; // taken from snake todo
+
 private:
 };
 
