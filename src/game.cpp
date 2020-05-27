@@ -3,15 +3,12 @@
 #include "SDL.h"
 #include "paddle.h"
 
-Game::Game(std::size_t screen_width, std::size_t screen_height, std::size_t grid_width, std::size_t grid_height) : ball(screen_width, screen_height, grid_height)
-//snake(grid_width, grid_height),
-/*engine(dev()),
-      random_w(0, static_cast<int>(grid_width)),
-      random_h(0, static_cast<int>(grid_height)) {
-  //PlaceFood();*/
+Game::Game(std::size_t screen_width, std::size_t screen_height, std::size_t grid_width, std::size_t grid_height)
+    : ball(screen_width, screen_height, grid_height),
+    screen_width(screen_width),
+    paddle(screen_width, screen_height, grid_width, grid_height)
 {
 }
-//Game::Game() {} // (todo:)initialize paddle, ball, board
 
 void Game::Run(Controller const &controller, Renderer &renderer,
                std::size_t target_frame_duration) {
@@ -70,6 +67,9 @@ void Game::Run(Controller const &controller, Renderer &renderer,
 }*/
 
 void Game::Update() {
+  ball.Update();
+  ball.speed += 0.2;
+  Game::CheckPlayingFieldCollisions();
   //if (!snake.alive) return;
 
   //snake.Update();
@@ -91,3 +91,19 @@ void Game::Update() {
 
 int Game::GetScore() const { return score; }
 //int Game::GetSize() const { return snake.size; }
+
+void Game::CheckPlayingFieldCollisions()
+{
+  if (ball.x >= screen_width)
+  {
+    ball.movementDirX = Ball::DirectionX::kNegative;
+  }
+  else if (ball.x <= 0)
+  {
+    ball.movementDirX = Ball::DirectionX::kPositive;
+  }
+  if (ball.y <= 0)
+  {
+    ball.movementDirY = Ball::DirectionY::kPositive;
+  }
+}

@@ -3,12 +3,29 @@
 Ball::Ball(std::size_t screen_width, std::size_t screen_height, std::size_t grid_height) : x(screen_width/2), y(screen_height-(3*grid_height)) {}
 Ball::~Ball() {}
 
-void Ball::Update(float deltaTimeSec)
+void Ball::Update()
 {
     // Moving the ball
-    Ball::x += Ball::movementDirectionX * deltaTimeSec;
-    Ball::y += Ball::movementDirectionY * deltaTimeSec;
+    if (movementDirX == DirectionX::kPositive)
+    {
+        Ball::x += speed * 0.05; // todo: for speed change here
+    }
+    else
+    {
+        Ball::x -= speed * 0.05;
+    }
+
+    if (movementDirY == DirectionY::kPositive)
+    {
+        Ball::y += speed * 0.05;
+    }
+    else
+    {
+        Ball::y -= speed * 0.05;
+    }
 }
+
+
 
 void Ball::SetDirection(float movementDirectionX, float movementDirectionY)
 {

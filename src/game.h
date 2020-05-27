@@ -29,11 +29,13 @@ class Game {
   std::mt19937 engine;
   std::uniform_int_distribution<int> random_w;
   std::uniform_int_distribution<int> random_h;*/
-
-  int score{0};
+ std::size_t screen_width; //todo:: temporary
+   int score{0};
 
   //void PlaceFood();
   void Update();
+
+  void CheckPlayingFieldCollisions();
 };
 
 #endif

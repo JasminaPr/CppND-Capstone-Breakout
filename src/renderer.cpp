@@ -63,8 +63,8 @@ void Renderer::Render(Ball const &ball, Paddle const &paddle, Board const &board
 
   // Render paddle
   SDL_SetRenderDrawColor(sdl_renderer, 0xFF, 0xFF, 0xFF, 0xFF);
-    block.x = screen_height/2;
-    block.y = screen_width/2;
+    block.x = paddle.x;
+    block.y = paddle.y;
     block.w = paddle.paddleWidth;
     block.h = paddle.paddleHeight;
         SDL_RenderFillRect(sdl_renderer, &block);
@@ -87,7 +87,7 @@ void Renderer::Render(Ball const &ball, Paddle const &paddle, Board const &board
       sdl_brick.w = board_parameters::board_brick_width;
       sdl_brick.h = board_parameters::board_brick_height;
       SDL_SetRenderDrawColor(sdl_renderer, 0xFF, 0x00, 0x00, 0xFF);
-      SDL_RenderFillRect(sdl_renderer, &sdl_brick);
+     // SDL_RenderFillRect(sdl_renderer, &sdl_brick);
       SDL_SetRenderDrawColor(sdl_renderer, 0xFF, 0xFF, 0xFF, 0xFF);
       SDL_RenderDrawRect(sdl_renderer, &sdl_brick);
     }
