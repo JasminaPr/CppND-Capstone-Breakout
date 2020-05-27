@@ -11,7 +11,7 @@ class Ball
 public:
     //enum class Direction { kUp, kDown, kLeft, kRight }; //works for paddle, not ball
 
-    Ball();
+    Ball(std::size_t screen_width, std::size_t screen_height, std::size_t grid_height);
     ~Ball();
 
     void Update(float deltaTimeSec);

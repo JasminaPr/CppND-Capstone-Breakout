@@ -1,6 +1,6 @@
 #include "ball.h"
 
-Ball::Ball() : x(0), y(0) {}
+Ball::Ball(std::size_t screen_width, std::size_t screen_height, std::size_t grid_height) : x(screen_width/2), y(screen_height-(3*grid_height)) {}
 Ball::~Ball() {}
 
 void Ball::Update(float deltaTimeSec)

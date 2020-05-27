@@ -3,13 +3,15 @@
 #include "SDL.h"
 #include "paddle.h"
 
-Game::Game(std::size_t grid_width, std::size_t grid_height)
-    : snake(grid_width, grid_height),
-      engine(dev()),
+Game::Game(std::size_t screen_width, std::size_t screen_height, std::size_t grid_width, std::size_t grid_height) : ball(screen_width, screen_height, grid_height)
+//snake(grid_width, grid_height),
+/*engine(dev()),
       random_w(0, static_cast<int>(grid_width)),
       random_h(0, static_cast<int>(grid_height)) {
-  PlaceFood();
+  //PlaceFood();*/
+{
 }
+//Game::Game() {} // (todo:)initialize paddle, ball, board
 
 void Game::Run(Controller const &controller, Renderer &renderer,
                std::size_t target_frame_duration) {
@@ -26,7 +28,8 @@ void Game::Run(Controller const &controller, Renderer &renderer,
     // Input, Update, Render - the main game loop.
     controller.HandleInput(running, paddle);
     Update();
-    renderer.Render(snake, food, ball, paddle, board);
+    //renderer.Render(snake, food, ball, paddle, board);
+    renderer.Render(ball, paddle, board);
 
     frame_end = SDL_GetTicks();
 
@@ -51,7 +54,7 @@ void Game::Run(Controller const &controller, Renderer &renderer,
   }
 }
 
-void Game::PlaceFood() {
+/*void Game::PlaceFood() {
   int x, y;
   while (true) {
     x = random_w(engine);
@@ -64,27 +67,27 @@ void Game::PlaceFood() {
       return;
     }
   }
-}
+}*/
 
 void Game::Update() {
-  if (!snake.alive) return;
+  //if (!snake.alive) return;
 
-  snake.Update();
+  //snake.Update();
 
-  int new_x = static_cast<int>(snake.head_x);
-  int new_y = static_cast<int>(snake.head_y);
+  //int new_x = static_cast<int>(snake.head_x);
+  //int new_y = static_cast<int>(snake.head_y);
 
   // Check if there's food over here
-  if (food.x == new_x && food.y == new_y) {
+  /*if (food.x == new_x && food.y == new_y) {
     score++;
     PlaceFood();
     // Grow snake and increase speed.
     snake.GrowBody();
     snake.speed += 0.02;
-  }
+  }*///
 
   paddle.Update();
 }
 
 int Game::GetScore() const { return score; }
-int Game::GetSize() const { return snake.size; }
+//int Game::GetSize() const { return snake.size; }
