@@ -21,7 +21,7 @@ public:
 
     Direction direction;
 
-    float speed{0.1f}; // taken from snake todo
+    float speed{15.0}; // taken from snake todo
 
 private:
 };
