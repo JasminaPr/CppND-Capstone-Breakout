@@ -68,9 +68,10 @@ void Game::Run(Controller const &controller, Renderer &renderer,
 
 void Game::Update() {
   ball.Update();
-  ball.speed += 0.2;
+  ball.speed += 0.02;
   Game::CheckPlayingFieldCollisions();
   Game::CheckPaddleBorders();
+  Game::CheckBallPaddleColisions();
   //if (!snake.alive) return;
 
   //snake.Update();
@@ -118,5 +119,15 @@ void Game::CheckPaddleBorders()
   else if (paddle.x <=0)
   {
     paddle.x = 0;
+  }
+}
+
+void Game::CheckBallPaddleColisions()
+{
+  if ((ball.x >= paddle.x) && (ball.x <= paddle.x + paddle.paddleWidth))
+  {
+    if ((ball.y >= paddle.y)) {
+      ball.movementDirY = Ball::DirectionY::kNegative;
+    }
   }
 }
