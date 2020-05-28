@@ -70,6 +70,7 @@ void Game::Update() {
   ball.Update();
   ball.speed += 0.2;
   Game::CheckPlayingFieldCollisions();
+  Game::CheckPaddleBorders();
   //if (!snake.alive) return;
 
   //snake.Update();
@@ -105,5 +106,17 @@ void Game::CheckPlayingFieldCollisions()
   if (ball.y <= 0)
   {
     ball.movementDirY = Ball::DirectionY::kPositive;
+  }
+}
+
+void Game::CheckPaddleBorders()
+{
+  if (paddle.x >= screen_width - paddle.paddleWidth)
+  {
+    paddle.x = screen_width - paddle.paddleWidth;
+  }
+  else if (paddle.x <=0)
+  {
+    paddle.x = 0;
   }
 }

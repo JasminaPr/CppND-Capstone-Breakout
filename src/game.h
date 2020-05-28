@@ -36,6 +36,7 @@ class Game {
   void Update();
 
   void CheckPlayingFieldCollisions();
+  void CheckPaddleBorders();
 };
 
 #endif
