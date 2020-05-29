@@ -54,8 +54,9 @@ void Game::Run(Controller const &controller, Renderer &renderer,
 }
 
 void Game::Update() {
+  if (!ball.alive) return;
+
   ball.Update();
-  //ball.speed += 0.02;
   Game::CheckPlayingFieldCollisions();
   Game::CheckPaddleBorders();
   Game::CheckBallPaddleColisions();
@@ -69,17 +70,17 @@ int Game::GetScore() const { return score; }
 
 void Game::CheckPlayingFieldCollisions()
 {
-  if (ball.x >= screen_width)
+  if ((ball.x >= screen_width) || (ball.x <= 0))
   {
-    ball.movementDirX = Ball::DirectionX::kNegative;
+    ball.ChangeDirectionX(); //movementDirX = ball.ChangeDirectionBall::DirectionX::kNegative;
   }
-  else if (ball.x <= 0)
+  /*else if (ball.x <= 0)
   {
     ball.movementDirX = Ball::DirectionX::kPositive;
-  }
+  }*/
   if (ball.y <= 0)
   {
-    ball.movementDirY = Ball::DirectionY::kPositive;
+    ball.ChangeDirectionY();
   }
 }
 
@@ -100,7 +101,7 @@ void Game::CheckBallPaddleColisions()
   if ((ball.x >= paddle.x) && (ball.x <= paddle.x + paddle.paddleWidth))
   {
     if ((ball.y >= paddle.y)) {
-      ball.movementDirY = Ball::DirectionY::kNegative;
+      ball.ChangeDirectionY();
     }
   }
 }
@@ -134,8 +135,10 @@ void Game::CheckBrickColisions()
          int idx = std::distance(distances.begin(), result); 
          std::cout <<idx << '\n';
          switch (idx)
+         if ((idx == 0) || (idx == 1)) {
+           ball.ChangeDirectionX();         }
          {
-         case 0:
+         /*case 0:
            ball.movementDirX = (ball.movementDirX == Ball::DirectionX::kNegative) ? Ball::DirectionX::kPositive : Ball::DirectionX::kNegative; //todo: create ball.opposite fcn
            break;
          case 2:
@@ -146,7 +149,7 @@ void Game::CheckBrickColisions()
            break;
          case 3:
            ball.movementDirY = (ball.movementDirY == Ball::DirectionY::kNegative) ? Ball::DirectionY::kPositive : Ball::DirectionY::kNegative; //todo: create ball.opposite fcn
-           break;
+           break;*/
          }
         }
       }

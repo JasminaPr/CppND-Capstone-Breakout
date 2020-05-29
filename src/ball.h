@@ -7,27 +7,28 @@
 class Ball
 {
 public:
-    enum class DirectionX { kPositive, kNegative }; 
-    enum class DirectionY { kPositive, kNegative };
+    enum class Direction { kPositive, kNegative }; 
 
     Ball(DisplayParams displayParams);
     ~Ball();
 
-    void Update(float deltaTimeSec);
     void Update();
-    /*void SetDirection(float ballDirectionX, float ballDirectionY);*/
+    void ChangeDirectionX();
+    void ChangeDirectionY();
 
     //position
     float x, y; //(jpremec) todo: getter and setter
     //dimensions
     float width, height; //(jpremec) todo: getter and setter
     //direction of movement
-    DirectionX movementDirX{DirectionX::kPositive};
-    DirectionY movementDirY{DirectionY::kNegative};
-    //float movementDirectionX, movementDirectionY;
-    float speed{2.0};
+
+
+    bool alive{true};
 private:
-    
+    const float speed{2.0};
+
+    Direction movementDirX{Direction::kPositive};
+    Direction movementDirY{Direction::kNegative};
 };
 
 #endif

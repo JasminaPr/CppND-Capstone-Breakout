@@ -9,7 +9,7 @@ Ball::~Ball() {}
 void Ball::Update()
 {
     // Moving the ball
-    if (movementDirX == DirectionX::kPositive)
+    if (movementDirX == Direction::kPositive)
     {
         Ball::x += speed; // todo: for speed change here
     }
@@ -18,7 +18,7 @@ void Ball::Update()
         Ball::x -= speed;
     }
 
-    if (movementDirY == DirectionY::kPositive)
+    if (movementDirY == Direction::kPositive)
     {
         Ball::y += speed;
     }
@@ -26,4 +26,14 @@ void Ball::Update()
     {
         Ball::y -= speed;
     }
+}
+
+void Ball::ChangeDirectionX()
+{
+    Ball::movementDirX = (Ball::movementDirX == Ball::Direction::kNegative) ? Ball::Direction::kPositive : Ball::Direction::kNegative;
+}
+
+void Ball::ChangeDirectionY()
+{
+    Ball::movementDirY = (Ball::movementDirY == Ball::Direction::kNegative) ? Ball::Direction::kPositive : Ball::Direction::kNegative;
 }
