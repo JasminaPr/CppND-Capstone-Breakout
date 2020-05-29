@@ -53,21 +53,6 @@ void Game::Run(Controller const &controller, Renderer &renderer,
   }
 }
 
-/*void Game::PlaceFood() {
-  int x, y;
-  while (true) {
-    x = random_w(engine);
-    y = random_h(engine);
-    // Check that the location is not occupied by a snake item before placing
-    // food.
-    if (!snake.SnakeCell(x, y)) {
-      food.x = x;
-      food.y = y;
-      return;
-    }
-  }
-}*/
-
 void Game::Update() {
   ball.Update();
   ball.speed += 0.02;
@@ -77,25 +62,10 @@ void Game::Update() {
   Game::CheckBrickColisions();
   //if (!snake.alive) return;
 
-  //snake.Update();
-
-  //int new_x = static_cast<int>(snake.head_x);
-  //int new_y = static_cast<int>(snake.head_y);
-
-  // Check if there's food over here
-  /*if (food.x == new_x && food.y == new_y) {
-    score++;
-    PlaceFood();
-    // Grow snake and increase speed.
-    snake.GrowBody();
-    snake.speed += 0.02;
-  }*///
-
   paddle.Update();
 }
 
 int Game::GetScore() const { return score; }
-//int Game::GetSize() const { return snake.size; }
 
 void Game::CheckPlayingFieldCollisions()
 {
@@ -178,20 +148,6 @@ void Game::CheckBrickColisions()
            ball.movementDirY = (ball.movementDirY == Ball::DirectionY::kNegative) ? Ball::DirectionY::kPositive : Ball::DirectionY::kNegative; //todo: create ball.opposite fcn
            break;
          }
-
-         /*if ()
-          {
-            
-            //ball.movementDirX = (Ball::DirectionX::kNegative) ? Ball::DirectionX::kPositive : Ball::DirectionX::kNegative;
-            //if (ball.movementDirX == Ball::DirectionX::kNegative)
-            //{
-              ball.movementDirY == Ball::DirectionY::kPositive; 
-            //}
-            //else
-            //{
-             // ball.movementDirX == Ball::DirectionX::kNegative;
-           // }
-          }*/
         }
       }
     }
