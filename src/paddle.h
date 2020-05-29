@@ -2,13 +2,14 @@
 #define PADDLE_H_
 
 #include <cstddef>
+#include "display_params.h"
 
 class Paddle
 {
 public:
     enum class Direction { kLeft, kRight }; //works for paddle, not ball
 
-    Paddle(std::size_t screen_width, std::size_t screen_height, std::size_t grid_width, std::size_t grid_height);
+    Paddle(DisplayParams displayParams);
     Paddle();
     ~Paddle();
 
