@@ -1,11 +1,9 @@
 #include "ball.h"
 
-Ball::Ball(std::size_t screen_width,
-           std::size_t screen_height,
-           std::size_t grid_height)
-    : x(screen_width / 2),
-      y(screen_height - (3 * grid_height)),
-      height(grid_height) {}
+Ball::Ball(DisplayParams displayParams)
+    : x(displayParams.screen_width / 2),
+      y(displayParams.screen_height - (3 * displayParams.grid_height)),
+      height(displayParams.grid_height) {}
 Ball::~Ball() {}
 
 void Ball::Update()
@@ -32,9 +30,9 @@ void Ball::Update()
 
 
 
-void Ball::SetDirection(float movementDirectionX, float movementDirectionY)
+/*void Ball::SetDirection(float movementDirectionX, float movementDirectionY)
 {
     float length = sqrt(movementDirectionX * movementDirectionX + movementDirectionY * movementDirectionY);
     this->movementDirectionX = kBallSpeed * (movementDirectionX / length);
     this->movementDirectionY = kBallSpeed + (movementDirectionY / length);
-}
+}*/

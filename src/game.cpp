@@ -6,7 +6,7 @@
 #include <vector>
 
 Game::Game(DisplayParams displayParams)
-    : ball(displayParams.screen_width, displayParams.screen_height, displayParams.grid_height),
+    : ball(displayParams),
       screen_width(displayParams.screen_width),
       paddle(displayParams.screen_width, displayParams.screen_height, displayParams.grid_width, displayParams.grid_height)
       //board()
