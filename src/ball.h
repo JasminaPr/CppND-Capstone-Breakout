@@ -4,9 +4,6 @@
 #include <math.h>
 #include "display_params.h"
 
-//Define ball speed
-constexpr float kBallSpeed = 550; //pixels per second
-
 class Ball
 {
 public:
@@ -28,7 +25,7 @@ public:
     DirectionX movementDirX{DirectionX::kPositive};
     DirectionY movementDirY{DirectionY::kNegative};
     //float movementDirectionX, movementDirectionY;
-    float speed{0.001f};
+    float speed{2.0};
 private:
     
 };

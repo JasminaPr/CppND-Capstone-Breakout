@@ -28,7 +28,6 @@ void Game::Run(Controller const &controller, Renderer &renderer,
     // Input, Update, Render - the main game loop.
     controller.HandleInput(running, paddle);
     Update();
-    //renderer.Render(snake, food, ball, paddle, board);
     renderer.Render(ball, paddle, board);
 
     frame_end = SDL_GetTicks();
@@ -56,7 +55,7 @@ void Game::Run(Controller const &controller, Renderer &renderer,
 
 void Game::Update() {
   ball.Update();
-  ball.speed += 0.02;
+  //ball.speed += 0.02;
   Game::CheckPlayingFieldCollisions();
   Game::CheckPaddleBorders();
   Game::CheckBallPaddleColisions();

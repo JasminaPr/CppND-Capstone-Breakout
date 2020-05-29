@@ -11,28 +11,19 @@ void Ball::Update()
     // Moving the ball
     if (movementDirX == DirectionX::kPositive)
     {
-        Ball::x += speed * 0.05; // todo: for speed change here
+        Ball::x += speed; // todo: for speed change here
     }
     else
     {
-        Ball::x -= speed * 0.05;
+        Ball::x -= speed;
     }
 
     if (movementDirY == DirectionY::kPositive)
     {
-        Ball::y += speed * 0.05;
+        Ball::y += speed;
     }
     else
     {
-        Ball::y -= speed * 0.05;
+        Ball::y -= speed;
     }
 }
-
-
-
-/*void Ball::SetDirection(float movementDirectionX, float movementDirectionY)
-{
-    float length = sqrt(movementDirectionX * movementDirectionX + movementDirectionY * movementDirectionY);
-    this->movementDirectionX = kBallSpeed * (movementDirectionX / length);
-    this->movementDirectionY = kBallSpeed + (movementDirectionY / length);
-}*/
