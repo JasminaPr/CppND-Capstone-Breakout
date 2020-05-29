@@ -5,10 +5,11 @@
 #include <algorithm>
 #include <vector>
 
-Game::Game(std::size_t screen_width, std::size_t screen_height, std::size_t grid_width, std::size_t grid_height)
-    : ball(screen_width, screen_height, grid_height),
-    screen_width(screen_width),
-    paddle(screen_width, screen_height, grid_width, grid_height)
+Game::Game(DisplayParams displayParams)
+    : ball(displayParams.screen_width, displayParams.screen_height, displayParams.grid_height),
+      screen_width(displayParams.screen_width),
+      paddle(displayParams.screen_width, displayParams.screen_height, displayParams.grid_width, displayParams.grid_height)
+      //board()
 {
 }
 

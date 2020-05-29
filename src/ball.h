@@ -10,9 +10,11 @@ class Ball
 {
 public:
     enum class DirectionX { kPositive, kNegative }; 
-    enum class DirectionY { kPositive, kNegative }; 
+    enum class DirectionY { kPositive, kNegative };
 
-    Ball(std::size_t screen_width, std::size_t screen_height, std::size_t grid_height);
+    Ball(std::size_t screen_width,
+         std::size_t screen_height,
+         std::size_t grid_height);
     ~Ball();
 
     void Update(float deltaTimeSec);

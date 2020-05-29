@@ -41,8 +41,8 @@ Renderer::~Renderer() {
 //void Renderer::Render(Snake const snake, SDL_Point const &food, Ball const &ball, Paddle const &paddle, Board const &board) {
 void Renderer::Render(Ball const &ball, Paddle const &paddle, Board const &board) {
   SDL_Rect block;
-  block.w = screen_width / grid_width;
-  block.h = screen_height / grid_height;
+  block.w = ball.width;
+  block.h = ball.height;//screen_height / grid_height;
 
   // Clear screen
   SDL_SetRenderDrawColor(sdl_renderer, 0x1E, 0x1E, 0x1E, 0xFF);
