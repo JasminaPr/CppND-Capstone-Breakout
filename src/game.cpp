@@ -2,6 +2,8 @@
 #include <iostream>
 #include "SDL.h"
 #include "paddle.h"
+#include <algorithm>
+#include <vector>
 
 Game::Game(std::size_t screen_width, std::size_t screen_height, std::size_t grid_width, std::size_t grid_height)
     : ball(screen_width, screen_height, grid_height),
@@ -72,6 +74,7 @@ void Game::Update() {
   Game::CheckPlayingFieldCollisions();
   Game::CheckPaddleBorders();
   Game::CheckBallPaddleColisions();
+  Game::CheckBrickColisions();
   //if (!snake.alive) return;
 
   //snake.Update();
@@ -128,6 +131,69 @@ void Game::CheckBallPaddleColisions()
   {
     if ((ball.y >= paddle.y)) {
       ball.movementDirY = Ball::DirectionY::kNegative;
+    }
+  }
+}
+
+void Game::CheckBrickColisions()
+{
+  for (int i = 0; i < board_parameters::board_width; i++)
+  {
+    for (int j = 0; j < board_parameters::board_height; j++)
+    {
+      Brick brick = board.bricks[i][j];
+
+      if (brick.state)
+      {
+        // brick x and y coordinates
+        float brickx = board.brickoffsetx + board.x + i * board_parameters::board_brick_width;
+        float bricky = board.brickoffsety + board.y + j * board_parameters::board_brick_height;
+
+        if ((ball.x <= brickx + board_parameters::board_brick_width) && (ball.x >= brickx) &&
+            (ball.y <= bricky + board_parameters::board_brick_height) && (ball.y >= bricky))
+        {
+          board.bricks[i][j].state = false;
+          std::cout << brickx << "brickx" << '\n' << bricky<< "bricky" << '\n' << ball.x<< "ballx" << '\n' << ball.y<< "bally" << '\n';
+         // calculate distance to borders to determine side of impact
+         float distXLeft = ball.x - brickx;//put vectors here
+         float distXRight = brickx + board_parameters::board_brick_width -ball.x;//put vectors here
+         float distYUp = ball.x - bricky;//put vectors here
+         float distYDown = bricky + board_parameters::board_brick_height - ball.y; //put vectors here
+         std::vector<float> distances = {distXLeft, distXRight, distYUp, distYDown};
+         std::vector<float>::iterator result = std::min_element(distances.begin(), distances.end());
+         int idx = std::distance(distances.begin(), result); 
+         std::cout <<idx << '\n';
+         switch (idx)
+         {
+         case 0:
+           ball.movementDirX = (ball.movementDirX == Ball::DirectionX::kNegative) ? Ball::DirectionX::kPositive : Ball::DirectionX::kNegative; //todo: create ball.opposite fcn
+           break;
+         case 2:
+           ball.movementDirY = (ball.movementDirY == Ball::DirectionY::kNegative) ? Ball::DirectionY::kPositive : Ball::DirectionY::kNegative; //todo: create ball.opposite fcn
+           break;
+         case 1:
+           ball.movementDirX = (ball.movementDirX == Ball::DirectionX::kNegative) ? Ball::DirectionX::kPositive : Ball::DirectionX::kNegative; //todo: create ball.opposite fcn
+           break;
+         case 3:
+           ball.movementDirY = (ball.movementDirY == Ball::DirectionY::kNegative) ? Ball::DirectionY::kPositive : Ball::DirectionY::kNegative; //todo: create ball.opposite fcn
+           break;
+         }
+
+         /*if ()
+          {
+            
+            //ball.movementDirX = (Ball::DirectionX::kNegative) ? Ball::DirectionX::kPositive : Ball::DirectionX::kNegative;
+            //if (ball.movementDirX == Ball::DirectionX::kNegative)
+            //{
+              ball.movementDirY == Ball::DirectionY::kPositive; 
+            //}
+            //else
+            //{
+             // ball.movementDirX == Ball::DirectionX::kNegative;
+           // }
+          }*/
+        }
+      }
     }
   }
 }

@@ -77,10 +77,10 @@ void Renderer::Render(Ball const &ball, Paddle const &paddle, Board const &board
     {
       Brick brick = board.bricks[i][j];
       // check if the brick exists
-      /*if (!brick.state)
+      if (!brick.state)
       {
         continue;
-      }*/
+      }
       SDL_Rect sdl_brick;
       sdl_brick.x = board.brickoffsetx + board.x + i * board_parameters::board_brick_width;
       sdl_brick.y = board.brickoffsety + board.y + j * board_parameters::board_brick_height;
