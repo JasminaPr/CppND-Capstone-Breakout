@@ -21,14 +21,17 @@ public:
     void Update() override;
     void ChangeDirectionX();
     void ChangeDirectionY();
-    void CheckPlayingFieldCollisions();
 
-    bool alive{true};
+    // getter
+    bool isBallAlive() { return alive; }
 
 private:
+    void CheckPlayingFieldCollisions();
+
     const float speed{2.0};
     const std::size_t screen_width;
     const std::size_t screen_height;
+    bool alive{true};
 
     Direction movementDirX{Direction::kPositive};
     Direction movementDirY{Direction::kNegative};

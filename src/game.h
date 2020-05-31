@@ -21,14 +21,11 @@ class Game {
   Ball ball;
   Paddle paddle;
   Board board;
-
-  std::size_t screen_width; //todo:: temporary
+  
   int score{0};
 
   void Update();
 
-  void CheckPlayingFieldCollisions();
-  void CheckPaddleBorders();
   void CheckBallPaddleColisions();
   void CheckBrickColisions();
 };

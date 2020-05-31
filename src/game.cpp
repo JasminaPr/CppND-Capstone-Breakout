@@ -7,7 +7,6 @@
 
 Game::Game(DisplayParams displayParams)
     : ball(displayParams),
-      screen_width(displayParams.screen_width),
       paddle(displayParams)
 {
 }
@@ -58,17 +57,17 @@ void Game::Run(Controller const &controller, Renderer &renderer,
 
 void Game::Update()
 {
-  if (!ball.alive)
+  if (!ball.isBallAlive())
     return;
 
   ball.Update();
   paddle.Update();
-  
+
   Game::CheckBallPaddleColisions();
   Game::CheckBrickColisions();
-  
 }
 
+// check whther ball has collided with paddle to change direction of the ball
 void Game::CheckBallPaddleColisions()
 {
   if ((ball.x >= paddle.x) && (ball.x <= paddle.x + paddle.width))
@@ -80,6 +79,8 @@ void Game::CheckBallPaddleColisions()
   }
 }
 
+// check whether ball has collided with a brick;
+// destroy the brick, add a score and change direction of the brick
 void Game::CheckBrickColisions()
 {
   for (int i = 0; i < board_parameters::board_width; i++)
@@ -88,31 +89,36 @@ void Game::CheckBrickColisions()
     {
       Brick brick = board.bricks[i][j];
 
+      // if brick is "allive"
       if (brick.state)
       {
-        // brick x and y coordinates
+        // get brick x and y coordinates
         float brickx = board.x + i * board_parameters::board_brick_width;
         float bricky = board.y + j * board_parameters::board_brick_height;
 
+        // if ball has hit the brick
         if ((ball.x <= brickx + board_parameters::board_brick_width) && (ball.x >= brickx) &&
             (ball.y <= bricky + board_parameters::board_brick_height) && (ball.y >= bricky))
         {
           board.bricks[i][j].state = false;
           score++;
 
-          float distXLeft = ball.x - brickx;                                        
+          // determine from which side the ball has hit the brick
+          float distXLeft = ball.x - brickx;
           float distXRight = brickx + board_parameters::board_brick_width - ball.x;
-          float distYUp = ball.x - bricky;                                          
-          float distYDown = bricky + board_parameters::board_brick_height - ball.y; 
+          float distYUp = ball.x - bricky;
+          float distYDown = bricky + board_parameters::board_brick_height - ball.y;
           std::vector<float> distances = {distXLeft, distXRight, distYUp, distYDown};
           std::vector<float>::iterator result = std::min_element(distances.begin(), distances.end());
           int idx = std::distance(distances.begin(), result);
 
+          // if ball has hit left or right vertical side of the brick, change direction of the ball in x
           if ((idx == 0) || (idx == 1))
           {
             ball.ChangeDirectionX();
           }
 
+          // if ball has hit upper or lower horizontal side of the brick, change direction of the ball in x
           if ((idx == 2) || (idx == 3))
           {
             ball.ChangeDirectionY();
@@ -124,4 +130,3 @@ void Game::CheckBrickColisions()
 }
 
 int Game::GetScore() const { return score; }
-
