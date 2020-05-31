@@ -5,7 +5,7 @@
 #include <algorithm>
 #include <vector>
 
-Game::Game(DisplayParams displayParams)
+Game::Game(DisplayParams &displayParams)
     : ball(displayParams),
       paddle(displayParams)
 {

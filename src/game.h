@@ -12,7 +12,7 @@
 
 class Game {
  public:
-  Game(DisplayParams displayParams);
+  Game(DisplayParams &displayParams);
   void Run(Controller const &controller, Renderer &renderer,
            std::size_t target_frame_duration);
   int GetScore() const;
