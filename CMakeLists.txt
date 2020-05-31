@@ -15,6 +15,6 @@ include_directories(${SDL2_INCLUDE_DIRS} src)
 #find_package(SDL2_image REQUIRED)
 #include_directories(${SDL2_IMAGE_INCLUDE_DIRS})
 
-add_executable(Breakout src/main.cpp src/game.cpp src/controller.cpp src/renderer.cpp src/snake.cpp src/ball.cpp src/paddle.cpp src/board.cpp)
+add_executable(Breakout src/main.cpp src/game.cpp src/controller.cpp src/renderer.cpp src/ball.cpp src/paddle.cpp src/board.cpp)
 string(STRIP ${SDL2_LIBRARIES} SDL2_LIBRARIES)
 target_link_libraries(Breakout ${SDL2_LIBRARIES})

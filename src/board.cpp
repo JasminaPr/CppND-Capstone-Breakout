@@ -1,13 +1,11 @@
 #include "board.h"
 
-
 Board::Board()
-    : x(0),
+    : x(70),
       y(50)
-{
-  
+{  
 }
 Board::~Board() {}
 
-void Board::Update() {}
-void Board::CreateLevel() {}
+void Board::Update() {} //not needed really?
+

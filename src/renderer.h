@@ -3,15 +3,13 @@
 
 #include <vector>
 #include "SDL.h"
-#include "snake.h"
 #include "ball.h"
 #include "paddle.h"
 #include "board.h"
 
 class Renderer {
  public:
-  Renderer(const std::size_t screen_width, const std::size_t screen_height,
-           const std::size_t grid_width, const std::size_t grid_height);
+  Renderer(const std::size_t screen_width, const std::size_t screen_height);
   ~Renderer();
 
   //void Render(Snake const snake, SDL_Point const &food, Ball const &ball, Paddle const &paddle, Board const &board);
@@ -26,8 +24,6 @@ class Renderer {
 
   const std::size_t screen_width;
   const std::size_t screen_height;
-  const std::size_t grid_width;
-  const std::size_t grid_height;
 };
 
 #endif

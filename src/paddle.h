@@ -7,24 +7,27 @@
 class Paddle
 {
 public:
-    enum class Direction { kLeft, kRight }; //works for paddle, not ball
+    enum class Direction { kLeft, kRight };
 
     Paddle(DisplayParams displayParams);
     Paddle();
     ~Paddle();
 
-    void Update();
+    void Update(); // override
 
-    //position
-    float x, y; //(jpremec) todo: getter and setter
     //dimensions
     float paddleWidth, paddleHeight; //(jpremec) todo: getter and setter
+//position
+    float x, y; //(jpremec) todo: getter and setter
 
-    Direction direction;
-
-    float speed{15.0}; // taken from snake todo
+    
 
 private:
+friend class Controller;
+Direction direction;
+//position
+    
+float speed{15.0}; 
 };
 
 #endif

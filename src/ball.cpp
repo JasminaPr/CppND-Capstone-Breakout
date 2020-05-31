@@ -3,7 +3,10 @@
 Ball::Ball(DisplayParams displayParams)
     : x(displayParams.screen_width / 2),
       y(displayParams.screen_height - (3 * displayParams.grid_height)),
-      height(displayParams.grid_height) {}
+      height(displayParams.grid_height),
+      screen_width(displayParams.screen_width)
+{
+}
 Ball::~Ball() {}
 
 void Ball::Update()
@@ -11,7 +14,7 @@ void Ball::Update()
     // Moving the ball
     if (movementDirX == Direction::kPositive)
     {
-        Ball::x += speed; // todo: for speed change here
+        Ball::x += speed; 
     }
     else
     {
@@ -26,6 +29,7 @@ void Ball::Update()
     {
         Ball::y -= speed;
     }
+    Ball::CheckPlayingFieldCollisions();
 }
 
 void Ball::ChangeDirectionX()
@@ -36,4 +40,16 @@ void Ball::ChangeDirectionX()
 void Ball::ChangeDirectionY()
 {
     Ball::movementDirY = (Ball::movementDirY == Ball::Direction::kNegative) ? Ball::Direction::kPositive : Ball::Direction::kNegative;
+}
+
+void Ball::CheckPlayingFieldCollisions()
+{
+    if ((Ball::x >= Ball::screen_width) || (Ball::x <= 0))
+    {
+        Ball::ChangeDirectionX();
+    }
+    if (Ball::y <= 0)
+    {
+        Ball::ChangeDirectionY();
+    }
 }
