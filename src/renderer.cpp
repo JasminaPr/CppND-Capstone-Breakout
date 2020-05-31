@@ -59,8 +59,8 @@ void Renderer::Render(Ball const &ball, Paddle const &paddle, Board const &board
   SDL_Rect block;
   block.x = paddle.x;
   block.y = paddle.y;
-  block.w = paddle.paddleWidth;
-  block.h = paddle.paddleHeight;
+  block.w = paddle.width;
+  block.h = paddle.height;
   SDL_RenderFillRect(sdl_renderer, &block);
 
   // Render board

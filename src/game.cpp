@@ -62,32 +62,22 @@ void Game::Update()
     return;
 
   ball.Update();
+  paddle.Update();
   
-  Game::CheckPaddleBorders();
   Game::CheckBallPaddleColisions();
   Game::CheckBrickColisions();
-  paddle.Update();
+  
 }
 
 int Game::GetScore() const { return score; }
 
 
 
-void Game::CheckPaddleBorders()
-{
-  if (paddle.x >= screen_width - paddle.paddleWidth)
-  {
-    paddle.x = screen_width - paddle.paddleWidth;
-  }
-  else if (paddle.x <= 0)
-  {
-    paddle.x = 0;
-  }
-}
+
 
 void Game::CheckBallPaddleColisions()
 {
-  if ((ball.x >= paddle.x) && (ball.x <= paddle.x + paddle.paddleWidth))
+  if ((ball.x >= paddle.x) && (ball.x <= paddle.x + paddle.width))
   {
     if ((ball.y >= paddle.y))
     {

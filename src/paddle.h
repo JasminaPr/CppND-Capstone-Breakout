@@ -7,7 +7,11 @@
 class Paddle
 {
 public:
-    enum class Direction { kLeft, kRight };
+    enum class Direction
+    {
+        kLeft,
+        kRight
+    };
 
     Paddle(DisplayParams displayParams);
     Paddle();
@@ -15,19 +19,19 @@ public:
 
     void Update(); // override
 
-    //dimensions
-    float paddleWidth, paddleHeight; //(jpremec) todo: getter and setter
-//position
-    float x, y; //(jpremec) todo: getter and setter
+    void CheckPaddleBorders();
 
-    
+    //dimensions
+    float width, height; //(jpremec) todo: getter and setter
+                         //position
+    float x, y;          //(jpremec) todo: getter and setter
 
 private:
-friend class Controller;
-Direction direction;
-//position
-    
-float speed{15.0}; 
+    friend class Controller;
+
+    Direction direction;
+    float speed{15.0};
+    const std::size_t screen_width;
 };
 
 #endif
