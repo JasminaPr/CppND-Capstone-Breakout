@@ -4,9 +4,9 @@ Ball::Ball(DisplayParams displayParams)
     : screen_width(displayParams.screen_width),
       screen_height(displayParams.screen_height)
 {
-    x =displayParams.screen_width / 2;
-      y = displayParams.screen_height - (3 * displayParams.grid_height);
-      height = displayParams.grid_height;
+    x = displayParams.screen_width / 2;
+    y = displayParams.screen_height - (3 * displayParams.grid_height);
+    height = displayParams.grid_height;
 }
 Ball::~Ball() {}
 
@@ -15,7 +15,7 @@ void Ball::Update()
     // Moving the ball
     if (movementDirX == Direction::kPositive)
     {
-        Ball::x += speed; 
+        Ball::x += speed;
     }
     else
     {
@@ -53,7 +53,7 @@ void Ball::CheckPlayingFieldCollisions()
     {
         Ball::ChangeDirectionY();
     }
-    if (Ball::y > Ball::screen_height) 
+    if (Ball::y > Ball::screen_height)
     {
         Ball::alive = false;
     }

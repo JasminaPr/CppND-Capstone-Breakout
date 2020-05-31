@@ -2,9 +2,11 @@
 #define PADDLE_H_
 
 #include <cstddef>
+
+#include "entity.h"
 #include "display_params.h"
 
-class Paddle
+class Paddle : public Entity
 {
 public:
     enum class Direction
@@ -17,14 +19,9 @@ public:
     Paddle();
     ~Paddle();
 
-    void Update(); // override
+    void Update() override; 
 
     void CheckPaddleBorders();
-
-    //dimensions
-    float width, height; //(jpremec) todo: getter and setter
-                         //position
-    float x, y;          //(jpremec) todo: getter and setter
 
 private:
     friend class Controller;
