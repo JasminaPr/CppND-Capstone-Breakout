@@ -79,7 +79,8 @@ void Renderer::Render(Ball const &ball, Paddle const &paddle, Board const &board
       sdl_brick.y = board.y + j * board_parameters::board_brick_height;
       sdl_brick.w = board_parameters::board_brick_width;
       sdl_brick.h = board_parameters::board_brick_height;
-      SDL_SetRenderDrawColor(sdl_renderer, 0x2e, 0x85, 0x6e, 0xFF);
+      //SDL_SetRenderDrawColor(sdl_renderer, 0x2e, 0x85, 0x6e, 0xFF);
+      SDL_SetRenderDrawColor(sdl_renderer, 0xfd, 0x82, 0x1a, 0xFF);
       SDL_RenderDrawRect(sdl_renderer, &sdl_brick);
     }
   }
@@ -88,7 +89,7 @@ void Renderer::Render(Ball const &ball, Paddle const &paddle, Board const &board
   SDL_RenderPresent(sdl_renderer);
 }
 
-void Renderer::UpdateWindowTitle(int score, int fps)
+void Renderer::UpdateWindowTitle(int score, int fps, Ball &ball)
 {
   std::string title{"Breakout Score: " + std::to_string(score) + " FPS: " + std::to_string(fps)};
   SDL_SetWindowTitle(sdl_window, title.c_str());

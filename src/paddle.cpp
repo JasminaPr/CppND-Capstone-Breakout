@@ -15,6 +15,7 @@ void Paddle::Update()
   Paddle::CheckPaddleBorders();
 }
 
+// check that paddle does not exit the screen horizontally
 void Paddle::CheckPaddleBorders()
 {
   if (Paddle::x >= screen_width - Paddle::width)

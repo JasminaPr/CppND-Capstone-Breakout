@@ -8,6 +8,7 @@ class Controller {
   void HandleInput(bool &running, Paddle &paddle) const;
 
  private:
+ // set direction of the paddle depending on the keys
   void SetPaddleX(Paddle &paddle, Paddle::Direction input) const;
 };
 

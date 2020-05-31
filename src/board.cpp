@@ -7,5 +7,5 @@ Board::Board()
 }
 Board::~Board() {}
 
-void Board::Update() {} //not needed really?
+void Board::Update() {} 
 

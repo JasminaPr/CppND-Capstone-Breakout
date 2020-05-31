@@ -5,14 +5,6 @@
 
 #include "entity.h"
 
-
-class Brick
-{
-public:
-    int type;
-    bool state{true};
-};
-
 namespace board_parameters
 {
 constexpr int board_width = 7;
@@ -20,6 +12,13 @@ constexpr int board_height = 5;
 constexpr int board_brick_width = 70;
 constexpr int board_brick_height = 24;
 } // namespace board_parameters
+
+class Brick
+{
+public:
+    int type;
+    bool state{true};
+};
 
 class Board : public Entity
 {

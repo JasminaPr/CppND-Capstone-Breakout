@@ -1,7 +1,6 @@
 #include "controller.h"
 #include <iostream>
 #include "SDL.h"
-//#include "paddle.h"
 
 void Controller::SetPaddleX(Paddle &paddle, Paddle::Direction input) const
 {
