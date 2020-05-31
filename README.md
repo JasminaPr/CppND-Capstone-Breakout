@@ -1,12 +1,6 @@
 # CPPND: Capstone Breakout
 
-This is a Cpp Nanodegree Capsone project. This project is a Breakout game based on [Udacity's Snake Game starter repo][https://github.com/udacity/CppND-Capstone-Snake-Game] with modifications inspired by [The Breakout Tutorial][https://rembound.com/articles/the-breakout-tutorial-with-cpp-and-sdl-2]. In short, backbone of the game loop structure is kept from Udacity's Snake Game starter repo, and actors are replaced to make it a Breakout Game. This project can also be checked out from GitHub [The Capstone Breakout Game][https://github.com/JasminaPr/CppND-Capstone-Breakout], where steps of the code development can be seen via commits.
-
-<img src="snake_game.gif"/>
-
-The Capstone Project gives you a chance to integrate what you've learned throughout this program. This project will become an important part of your portfolio to share with current and future colleagues and employers.
-
-In this project, you can build your own C++ application or extend this Snake game, following the principles you have learned throughout this Nanodegree Program. This project will demonstrate that you can independently create applications using a wide range of C++ features.
+This is a Cpp Nanodegree Capsone project. This project is a Breakout game based on [Udacity's Snake Game starter repo][https://github.com/udacity/CppND-Capstone-Snake-Game] with modifications inspired by [The Breakout Tutorial][https://rembound.com/articles/the-breakout-tutorial-with-cpp-and-sdl-2]. In short, backbone of the game loop structure is kept from Udacity's Snake Game starter repo, and actors (entities) are replaced to make it a Breakout Game. This project can also be checked out from GitHub [The Capstone Breakout Game][https://github.com/JasminaPr/CppND-Capstone-Breakout], where steps of the code development can be seen via commits.
 
 ## Dependencies for Running Locally
 * cmake >= 3.7
@@ -29,3 +23,30 @@ In this project, you can build your own C++ application or extend this Snake gam
 2. Make a build directory in the top level directory: `mkdir build && cd build`
 3. Compile: `cmake .. && make`
 4. Run it: `./Breakout`.
+
+## Overview of the code structure
+
+### Game loop
+Code is structured into the main known loop: Input, Update and Render.
+* Input is handled by getting the keys left and right arrow from the keyboard which moves the paddle.
+* Update in each frame updates position of the ball, position of the paddle and checks whether there were any of the following collisions: paddle-ball colision, paddle-playing field edge colision, ball-playing field edge colision and finally ball-brick colision. In case ball hits the lower edge of the playing field and goes beyond the reach of the paddle, ball is set to not alive anymore.
+* Render renders each individual entity depending on the update in previous step.
+
+### Entities in the game
+Code is structured in Object-Oriented manner, therefore each entity is a class, with some of the additional classes.
+#### Entity
+Class entity is a parent class to all other actors in the playing filed. These include: ball, paddle, board with bricks.
+#### Ball
+Class Ball is a child class of class Entity. Position and dimensions memebers are gained from the parent class. There are also additional members and functions related to the ball, such as checking whether the ball has colided with the edges of the playing field.
+#### Paddle
+Paddle is also a child class of the class Entity. It is responsive to the user input via keyboard. Also contains other methods, such as checking whether the paddle has collided with the edges of the playing field.
+#### Board
+Exactly as Ball and Paddle, Board is also a child of the class Entity. Board contains predefined number of bricks. Goal of the game is to destroy all the bricks using Ball and Paddle.
+#### Game
+Class Game is inherited from the starter repo. IIts function Run() contains main game loop functions - input, update and render.
+#### Controller
+Also inherited from starter repo, except that in this project it controls the Paddle. Paddle can move only in left or right direction.
+#### Renderer
+Renderer is also inherited from starter repo, it renders the playing field and main actors.
+
+### Satisfying the necessary rubric
