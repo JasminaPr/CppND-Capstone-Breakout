@@ -60,8 +60,6 @@ void Game::Update() {
   Game::CheckPaddleBorders();
   Game::CheckBallPaddleColisions();
   Game::CheckBrickColisions();
-  //if (!snake.alive) return;
-
   paddle.Update();
 }
 
@@ -71,12 +69,8 @@ void Game::CheckPlayingFieldCollisions()
 {
   if ((ball.x >= screen_width) || (ball.x <= 0))
   {
-    ball.ChangeDirectionX(); //movementDirX = ball.ChangeDirectionBall::DirectionX::kNegative;
+    ball.ChangeDirectionX();
   }
-  /*else if (ball.x <= 0)
-  {
-    ball.movementDirX = Ball::DirectionX::kPositive;
-  }*/
   if (ball.y <= 0)
   {
     ball.ChangeDirectionY();
@@ -123,6 +117,7 @@ void Game::CheckBrickColisions()
             (ball.y <= bricky + board_parameters::board_brick_height) && (ball.y >= bricky))
         {
           board.bricks[i][j].state = false;
+          score++;
           //std::cout << brickx << "brickx" << '\n' << bricky<< "bricky" << '\n' << ball.x<< "ballx" << '\n' << ball.y<< "bally" << '\n';
          // calculate distance to borders to determine side of impact
          float distXLeft = ball.x - brickx;//put vectors here
@@ -135,7 +130,10 @@ void Game::CheckBrickColisions()
          //std::cout <<idx << '\n';
          if ((idx == 0) || (idx == 1)) {
            ball.ChangeDirectionX();         }
-         {
+         
+                    if ((idx == 2) || (idx == 3)) {
+           ball.ChangeDirectionY();         }
+         
          /*case 0:
            ball.movementDirX = (ball.movementDirX == Ball::DirectionX::kNegative) ? Ball::DirectionX::kPositive : Ball::DirectionX::kNegative; //todo: create ball.opposite fcn
            break;
@@ -148,7 +146,7 @@ void Game::CheckBrickColisions()
          case 3:
            ball.movementDirY = (ball.movementDirY == Ball::DirectionY::kNegative) ? Ball::DirectionY::kPositive : Ball::DirectionY::kNegative; //todo: create ball.opposite fcn
            break;*/
-         }
+         
         }
       }
     }

@@ -13,9 +13,9 @@ public:
 
 namespace board_parameters
 {
-constexpr int board_width = 13;
+constexpr int board_width = 9;
 constexpr int board_height = 8;
-constexpr int board_brick_width = 50;
+constexpr int board_brick_width = 70;
 constexpr int board_brick_height = 24;
 } // namespace board_parameters
 
