@@ -1,6 +1,6 @@
 #include "paddle.h"
 
-Paddle::Paddle(DisplayParams displayParams)
+Paddle::Paddle(DisplayParams &displayParams)
     : screen_width(displayParams.screen_width)
 {
   height = displayParams.grid_height / 2;

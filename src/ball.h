@@ -15,7 +15,7 @@ public:
         kNegative
     };
 
-    Ball(DisplayParams displayParams);
+    Ball(DisplayParams &displayParams);
     ~Ball();
 
     void Update() override;

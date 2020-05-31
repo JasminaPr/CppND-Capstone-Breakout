@@ -15,7 +15,7 @@ public:
         kRight
     };
 
-    Paddle(DisplayParams displayParams);
+    Paddle(DisplayParams &displayParams);
     Paddle();
     ~Paddle();
 

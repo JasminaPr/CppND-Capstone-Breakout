@@ -1,6 +1,6 @@
 #include "ball.h"
 
-Ball::Ball(DisplayParams displayParams)
+Ball::Ball(DisplayParams &displayParams)
     : screen_width(displayParams.screen_width),
       screen_height(displayParams.screen_height)
 {
