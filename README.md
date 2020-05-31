@@ -2,7 +2,7 @@
 
 This is a Cpp Nanodegree Capsone project. This project is a Breakout game based on [Udacity's Snake Game starter repo][https://github.com/udacity/CppND-Capstone-Snake-Game] with modifications inspired by [The Breakout Tutorial][https://rembound.com/articles/the-breakout-tutorial-with-cpp-and-sdl-2]. In short, backbone of the game loop structure is kept from Udacity's Snake Game starter repo, and actors (entities) are replaced to make it a Breakout Game. This project can also be checked out from GitHub [The Capstone Breakout Game][https://github.com/JasminaPr/CppND-Capstone-Breakout], where steps of the code development can be seen via commits.
 
-Goal of the game is to destroy all the bricks by controlling the paddle via left and right arrow keys. Bricks are destroyed once the ball hits them. Ball is not allowed to pass the point on the lower bottom of the screen where it is not reachable by the paddle anymore. In this case the ball becomes unresponsive - game over.
+Goal of the game is to destroy all the bricks by controlling the paddle via left and right arrow keys. The Bricks are destroyed once the ball hits them. The Ball is not allowed to pass the lower bottom of the screen point where it is not reachable by the paddle anymore. In this case the ball becomes unresponsive - game over.
 
 ## Dependencies for Running Locally
 * cmake >= 3.7
@@ -29,11 +29,11 @@ Goal of the game is to destroy all the bricks by controlling the paddle via left
 ## Overview of the code structure
 
 ### Game loop
-Code is structured into the main known loop: Input, Update and Render.
+Code is structured into the main known "game loop": Input, Update and Render.
 #### Input
 Input is handled by getting the keys left and right arrow from the keyboard which moves the paddle.
 #### Update
-Update in each frame updates position of the ball, position of the paddle and checks whether there were any of the following collisions: paddle-ball colision, paddle-playing field edge colision, ball-playing field edge colision and finally ball-brick colision. In case ball hits the lower edge of the playing field and goes beyond the reach of the paddle, ball is set to not alive anymore.
+In each frame position of the ball and position of the paddle are updated. There are also checks whether there were any of the following collisions: paddle-ball colision, paddle-playing field edge colision, ball-playing field edge colision and finally ball-brick colision. In case the ball hits the lower edge of the playing field and goes beyond the reach of the paddle, ball is not alive anymore.
 #### Render
 Render renders each individual entity depending on the update in previous step.
 
@@ -48,7 +48,7 @@ Paddle is also a child class of the class Entity. It is responsive to the user i
 #### Board
 Exactly as Ball and Paddle, Board is also a child of the class Entity. Board contains predefined number of bricks. Goal of the game is to destroy all the bricks using Ball and Paddle.
 #### Game
-Class Game is inherited from the starter repo. IIts function Run() contains main game loop functions - input, update and render.
+Class Game is inherited from the starter repo. Its function Run() contains main game loop functions - input, update and render.
 #### Controller
 Also inherited from starter repo, except that in this project it controls the Paddle. Paddle can move only in left or right direction.
 #### Renderer
@@ -60,7 +60,7 @@ Renderer is also inherited from starter repo, it renders the playing field and m
 #### Criteria: The project uses Object Oriented Programming tecniques.
 Project is structred into classes. Besides the inherited "generic classes" such as game, renderer or controller, additional actors(entities) in the game are organized in a way that there is a parent class Entity from which following child classes are derived: Ball, Paddle, Board.
 #### Criteria: Classes use appropriate access specifiers for class members. 
-All members are specifically declared as public or private. There are also getters defined, such as getter to check whether the ball is alive. One example is defined in: ball.h, line 26. Called in: game.cpp, line 60.
+All members are specifically declared as public or private. There are also getters defined, such as getter to check whether the ball is alive. One example is defined in: ball.h, line 26. Called in: game.cpp, line 65.
 #### Criteria: Class constructors utilize member initialization lists.
 For class members which are not derived from parent class, member initialization lists are used. Example 1: game.cpp lines 8-10. Example 2: ball.cpp lines 3-5. Example 3: paddle.cpp line 4.
 #### Criteria: Derived class functions overrride virtual base class functions.
