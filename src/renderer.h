@@ -12,7 +12,6 @@ class Renderer {
   Renderer(const std::size_t screen_width, const std::size_t screen_height);
   ~Renderer();
 
-  //void Render(Snake const snake, SDL_Point const &food, Ball const &ball, Paddle const &paddle, Board const &board);
   void Render(Ball const &ball, Paddle const &paddle, Board const &board);
   void UpdateWindowTitle(int score, int fps, Ball &ball);
   void DrawCircle(SDL_Renderer *renderer, SDL_Point center, int radius);
