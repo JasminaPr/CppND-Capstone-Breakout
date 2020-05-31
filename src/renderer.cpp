@@ -82,8 +82,9 @@ void Renderer::Render(Ball const &ball, Paddle const &paddle, Board const &board
         continue;
       }
       SDL_Rect sdl_brick;
-      sdl_brick.x = board.brickoffsetx + board.x + i * board_parameters::board_brick_width;
-      sdl_brick.y = board.brickoffsety + board.y + j * board_parameters::board_brick_height;
+      sdl_brick.x = board.x + i * board_parameters::board_brick_width;
+     // std::cout << board.brickoffsetx << '\n';
+      sdl_brick.y = board.y + j * board_parameters::board_brick_height;
       sdl_brick.w = board_parameters::board_brick_width;
       sdl_brick.h = board_parameters::board_brick_height;
       SDL_SetRenderDrawColor(sdl_renderer, 0xFF, 0x00, 0x00, 0xFF);

@@ -117,14 +117,14 @@ void Game::CheckBrickColisions()
       if (brick.state)
       {
         // brick x and y coordinates
-        float brickx = board.brickoffsetx + board.x + i * board_parameters::board_brick_width;
-        float bricky = board.brickoffsety + board.y + j * board_parameters::board_brick_height;
+        float brickx = board.x + i * board_parameters::board_brick_width;
+        float bricky = board.y + j * board_parameters::board_brick_height;
 
         if ((ball.x <= brickx + board_parameters::board_brick_width) && (ball.x >= brickx) &&
             (ball.y <= bricky + board_parameters::board_brick_height) && (ball.y >= bricky))
         {
           board.bricks[i][j].state = false;
-          std::cout << brickx << "brickx" << '\n' << bricky<< "bricky" << '\n' << ball.x<< "ballx" << '\n' << ball.y<< "bally" << '\n';
+          //std::cout << brickx << "brickx" << '\n' << bricky<< "bricky" << '\n' << ball.x<< "ballx" << '\n' << ball.y<< "bally" << '\n';
          // calculate distance to borders to determine side of impact
          float distXLeft = ball.x - brickx;//put vectors here
          float distXRight = brickx + board_parameters::board_brick_width -ball.x;//put vectors here
@@ -133,7 +133,7 @@ void Game::CheckBrickColisions()
          std::vector<float> distances = {distXLeft, distXRight, distYUp, distYDown};
          std::vector<float>::iterator result = std::min_element(distances.begin(), distances.end());
          int idx = std::distance(distances.begin(), result); 
-         std::cout <<idx << '\n';
+         //std::cout <<idx << '\n';
          if ((idx == 0) || (idx == 1)) {
            ball.ChangeDirectionX();         }
          {

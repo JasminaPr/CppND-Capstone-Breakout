@@ -13,7 +13,7 @@ public:
 
 namespace board_parameters
 {
-constexpr int board_width = 12;
+constexpr int board_width = 13;
 constexpr int board_height = 8;
 constexpr int board_brick_width = 50;
 constexpr int board_brick_height = 24;
@@ -32,7 +32,7 @@ public:
 
     Brick bricks[board_parameters::board_width][board_parameters::board_height];
 
-    float brickoffsetx{0}, brickoffsety{16}; // private then getter and setter
+    //float brickoffsetx, brickoffsety; // private then getter and setter
     float x, y; //(jpremec) todo: getter and setter
 private:
 };
