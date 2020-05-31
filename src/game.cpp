@@ -8,8 +8,7 @@
 Game::Game(DisplayParams displayParams)
     : ball(displayParams),
       screen_width(displayParams.screen_width),
-      paddle(displayParams),
-      board(displayParams)
+      paddle(displayParams)
 {
 }
 
