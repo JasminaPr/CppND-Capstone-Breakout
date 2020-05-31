@@ -69,12 +69,6 @@ void Game::Update()
   
 }
 
-int Game::GetScore() const { return score; }
-
-
-
-
-
 void Game::CheckBallPaddleColisions()
 {
   if ((ball.x >= paddle.x) && (ball.x <= paddle.x + paddle.width))
@@ -128,3 +122,6 @@ void Game::CheckBrickColisions()
     }
   }
 }
+
+int Game::GetScore() const { return score; }
+

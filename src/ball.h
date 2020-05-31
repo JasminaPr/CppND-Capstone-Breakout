@@ -27,6 +27,7 @@ public:
 private:
     const float speed{2.0};
     const std::size_t screen_width;
+    const std::size_t screen_height;
 
     Direction movementDirX{Direction::kPositive};
     Direction movementDirY{Direction::kNegative};

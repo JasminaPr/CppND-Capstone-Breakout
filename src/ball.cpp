@@ -4,7 +4,8 @@ Ball::Ball(DisplayParams displayParams)
     : x(displayParams.screen_width / 2),
       y(displayParams.screen_height - (3 * displayParams.grid_height)),
       height(displayParams.grid_height),
-      screen_width(displayParams.screen_width)
+      screen_width(displayParams.screen_width),
+      screen_height(displayParams.screen_height)
 {
 }
 Ball::~Ball() {}
@@ -51,5 +52,9 @@ void Ball::CheckPlayingFieldCollisions()
     if (Ball::y <= 0)
     {
         Ball::ChangeDirectionY();
+    }
+    if (Ball::y > Ball::screen_height) 
+    {
+        Ball::alive = false;
     }
 }
