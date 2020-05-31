@@ -1,6 +1,6 @@
 #include "board.h"
 
-Board::Board(): x(0), y(50) {}
+Board::Board(DisplayParams displayParams): x(0), y(50) {}
 Board::~Board() {}
 
 void Board::Update() {}

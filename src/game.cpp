@@ -8,8 +8,8 @@
 Game::Game(DisplayParams displayParams)
     : ball(displayParams),
       screen_width(displayParams.screen_width),
-      paddle(displayParams)
-      //board()
+      paddle(displayParams),
+      board(displayParams)
 {
 }
 
@@ -134,7 +134,6 @@ void Game::CheckBrickColisions()
          std::vector<float>::iterator result = std::min_element(distances.begin(), distances.end());
          int idx = std::distance(distances.begin(), result); 
          std::cout <<idx << '\n';
-         switch (idx)
          if ((idx == 0) || (idx == 1)) {
            ball.ChangeDirectionX();         }
          {

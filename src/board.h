@@ -2,6 +2,7 @@
 #define BOARD_H_
 
 #include <math.h>
+#include "display_params.h"
 
 class Brick
 {
@@ -23,7 +24,7 @@ class Board
 public:
     //enum class Direction { kUp, kDown, kLeft, kRight }; //works for paddle, not ball
 
-    Board();
+    Board(DisplayParams displayParams);
     ~Board();
 
     void Update();
