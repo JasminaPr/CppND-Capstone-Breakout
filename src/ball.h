@@ -2,9 +2,11 @@
 #define BALL_H_
 
 #include <math.h>
+
+#include "entity.h"
 #include "display_params.h"
 
-class Ball
+class Ball : public Entity
 {
 public:
     enum class Direction { kPositive, kNegative }; 
@@ -12,15 +14,15 @@ public:
     Ball(DisplayParams displayParams);
     ~Ball();
     
-    void Update();
+    void Update() override;
     void ChangeDirectionX();
     void ChangeDirectionY();
     void CheckPlayingFieldCollisions();
 
     //position
-    float x, y; //(jpremec) todo: getter and setter
+    //float x, y; //(jpremec) todo: getter and setter
     //dimensions
-    float width, height; //(jpremec) todo: getter and setter
+    //float width, height; //(jpremec) todo: getter and setter
     //direction of movement
 
     bool alive{true};
