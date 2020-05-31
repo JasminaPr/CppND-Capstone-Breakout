@@ -3,6 +3,8 @@
 
 #include <math.h>
 
+#include "entity.h"
+
 
 class Brick
 {
@@ -19,19 +21,17 @@ constexpr int board_brick_width = 70;
 constexpr int board_brick_height = 24;
 } // namespace board_parameters
 
-class Board
+class Board : public Entity
 {
 public:
   
     Board();
     ~Board();
 
-    void Update();
+    void Update() override;
 
     Brick bricks[board_parameters::board_width][board_parameters::board_height];
 
-    float x, y; //(jpremec) todo: getter and setter
-private:
 };
 
 #endif
