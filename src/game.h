@@ -13,6 +13,8 @@
 class Game {
  public:
   Game(DisplayParams &displayParams);
+  ~Game();
+
   void Run(Controller const &controller, Renderer &renderer,
            std::size_t target_frame_duration);
   int GetScore() const;
@@ -20,7 +22,7 @@ class Game {
  private:
   Ball ball;
   Paddle paddle;
-  Board board;
+  Board *board;
   
   int score{0};
 

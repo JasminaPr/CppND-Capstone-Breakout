@@ -9,6 +9,11 @@ Game::Game(DisplayParams &displayParams)
     : ball(displayParams),
       paddle(displayParams)
 {
+  board = new Board();
+}
+Game::~Game()
+{
+  delete board;
 }
 
 void Game::Run(Controller const &controller, Renderer &renderer,
@@ -28,7 +33,7 @@ void Game::Run(Controller const &controller, Renderer &renderer,
     // Input, Update, Render - the main game loop.
     controller.HandleInput(running, paddle);
     Update();
-    renderer.Render(ball, paddle, board);
+    renderer.Render(ball, paddle, *board);
 
     frame_end = SDL_GetTicks();
 
@@ -87,20 +92,20 @@ void Game::CheckBrickColisions()
   {
     for (int j = 0; j < board_parameters::board_height; j++)
     {
-      Brick brick = board.bricks[i][j];
+      Brick brick = board->bricks[i][j];
 
       // if brick is "allive"
       if (brick.state)
       {
         // get brick x and y coordinates
-        float brickx = board.x + i * board_parameters::board_brick_width;
-        float bricky = board.y + j * board_parameters::board_brick_height;
+        float brickx = board->x + i * board_parameters::board_brick_width;
+        float bricky = board->y + j * board_parameters::board_brick_height;
 
         // if ball has hit the brick
         if ((ball.x <= brickx + board_parameters::board_brick_width) && (ball.x >= brickx) &&
             (ball.y <= bricky + board_parameters::board_brick_height) && (ball.y >= bricky))
         {
-          board.bricks[i][j].state = false;
+          board->bricks[i][j].state = false;
           score++;
 
           // determine from which side the ball has hit the brick

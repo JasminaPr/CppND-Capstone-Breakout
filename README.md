@@ -70,4 +70,4 @@ Classes Ball, Paddle and Board override virtual function Update() declared in cl
 #### The project makes use of references in function declarations.
 In the constructor of the classes Game, Ball and Paddle there is a struct called displayParameters passed by reference. Struct DisplayParameters contains the inital display parameters so the ratio of the Ball and Paddle sizes compared to the screen size stays consistent with screen size changes. Additionally, paddle is passed by reference to the friend class Controller, where the position of the paddle is set. For reference check controller.cpp. 
 #### The project uses destructors appropriately.
-
+In the game.cpp, member board is defined as a pointer to class board. In the constructor of the class Game, memory is allocated using "new". Appropriately, memory is deallocated in the destructor of the class Game with "delete". For reference check game.cpp, lines 8-17.
