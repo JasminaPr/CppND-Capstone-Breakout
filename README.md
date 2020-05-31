@@ -1,6 +1,6 @@
-# CPPND: Capstone Snake Game Example
+# CPPND: Capstone Breakout
 
-This is a starter repo for the Capstone project in the [Udacity C++ Nanodegree Program](https://www.udacity.com/course/c-plus-plus-nanodegree--nd213). The code for this repo was inspired by [this](https://codereview.stackexchange.com/questions/212296/snake-game-in-c-with-sdl) excellent StackOverflow post and set of responses.
+This is a Cpp Nanodegree Capsone project. This project is a Breakout game based on [Udacity's Snake Game starter repo][https://github.com/udacity/CppND-Capstone-Snake-Game] with modifications inspired by [The Breakout Tutorial][https://rembound.com/articles/the-breakout-tutorial-with-cpp-and-sdl-2]. In short, backbone of the game loop structure is kept from Udacity's Snake Game starter repo, and actors are replaced to make it a Breakout Game. This project can also be checked out from GitHub [The Capstone Breakout Game][https://github.com/JasminaPr/CppND-Capstone-Breakout], where steps of the code development can be seen via commits.
 
 <img src="snake_game.gif"/>
 
